@@ -13,33 +13,33 @@ import com.product.service.ProductService;
 
 public class ProductServiceImpl implements ProductService {
 
+	public ProductServiceImpl() {
+		ConnectionDB conndb = new ConnectionDB();
+		conn = conndb.getConnection();
+	}
+
 	PreparedStatement ps;
 	Connection conn;
 	ResultSet result;
 
 	@Override
 	public Boolean add() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Boolean delete() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Boolean update() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<ProductModel> queryAll() {
-		ConnectionDB conndb = new ConnectionDB();
 		String sql = "select * from tb_product";
-		conn = conndb.getConnection();
 		List<ProductModel> list = new ArrayList<ProductModel>();
 		try {
 			ps = conn.prepareStatement(sql);
@@ -62,9 +62,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductModel> queryByName(String name) {
-		ConnectionDB conndb = new ConnectionDB();
 		String sql = "select * from tb_product where name=?";
-		conn = conndb.getConnection();
 		List<ProductModel> list = new ArrayList<ProductModel>();
 		try {
 			ps = conn.prepareStatement(sql);
@@ -88,9 +86,8 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ProductModel queryByCode(String code) {
-		ConnectionDB conndb = new ConnectionDB();
+		
 		String sql = "select * from tb_product where code=?";
-		conn = conndb.getConnection();
 		ProductModel model = new ProductModel();
 		try {
 			ps = conn.prepareStatement(sql);
