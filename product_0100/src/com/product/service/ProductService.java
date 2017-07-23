@@ -5,13 +5,16 @@ import java.util.List;
 import com.product.model.ProductModel;
 
 public interface ProductService {
-	//增
-	Boolean add();
-	//删
+	// 增
+	Boolean add(ProductModel pro);
+
+	// 删
 	Boolean delete();
-	//改
+
+	// 改
 	Boolean update();
-	//查
+
+	// 查
 	List<ProductModel> query();
-	
+
 }
