@@ -12,6 +12,10 @@ public interface ProductService {
 	//改
 	Boolean update();
 	//查
-	List<ProductModel> query();
+	List<ProductModel> queryAll();
+	//根据name查询
+	List<ProductModel> queryByName(String name);
+	//根据code查询
+	ProductModel queryByCode(String code);
 	
 }

@@ -6,14 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ConnectionDB {
-	private final String URL = "jdbc:oracle:thin@192.168.0.103:1521:XE";
+	private final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
 	private final String NAME = "oracle";
 	private final String PASSWORD = "oracle";
 	private Connection conn;
 	
 	public ConnectionDB() {
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
