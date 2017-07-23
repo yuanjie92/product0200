@@ -8,9 +8,9 @@ public interface ProductService {
 	//增
 	Boolean add();
 	//删
-	Boolean delete();
-	//改
-	Boolean update();
+	Boolean delete(int id);
+	//通过id修改count
+	Boolean update(int count,int id);
 	//查
 	List<ProductModel> queryAll();
 	//根据name查询

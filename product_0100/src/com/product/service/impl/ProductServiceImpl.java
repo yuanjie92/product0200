@@ -18,9 +18,10 @@ public class ProductServiceImpl implements ProductService {
 		conn = conndb.getConnection();
 	}
 
-	PreparedStatement ps;
 	Connection conn;
+	PreparedStatement ps;
 	ResultSet result;
+	int ret;
 
 	@Override
 	public Boolean add() {
@@ -28,13 +29,49 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Boolean delete() {
-		return null;
+	public Boolean delete(int id) {
+		String sql = "delete from tb_product where id=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1,id);
+			ret = ps.executeUpdate();
+			if(ret>0){
+				return true; 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
 	}
 
 	@Override
-	public Boolean update() {
-		return null;
+	public Boolean update(int count,int id) {
+		String sql = "update tb_product set count=? where id=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1,count);
+			ps.setInt(2,id);
+			ret = ps.executeUpdate();
+			if(ret > 0){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
 	}
 
 	@Override
@@ -54,6 +91,12 @@ public class ProductServiceImpl implements ProductService {
 				list.add(model);
 			}
 			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			result.close();
+			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -81,6 +124,12 @@ public class ProductServiceImpl implements ProductService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		try {
+			result.close();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return list;
 	}
 
@@ -101,6 +150,12 @@ public class ProductServiceImpl implements ProductService {
 				model.setName(result.getString("NAME"));
 			}
 			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			result.close();
+			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
