@@ -46,9 +46,29 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Boolean update() {
+	public Boolean update(ProductModel pro) {
+		String sql = "update tb_product set code=?,name=?,price=?,count=?";
+		PreparedStatement ps = null;
+		int i = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, pro.getCode());
+			ps.setString(2, pro.getName());
+			ps.setDouble(3, pro.getPrice());
+			ps.setInt(4, pro.getCount());
+			
 
-		return null;
+			i = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if (i > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override

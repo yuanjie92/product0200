@@ -12,7 +12,7 @@ public interface ProductService {
 	Boolean delete();
 
 	// 改
-	Boolean update();
+	Boolean update(ProductModel pro);
 
 	// 查
 	List<ProductModel> query();
