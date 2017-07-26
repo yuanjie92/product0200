@@ -18,7 +18,7 @@ public interface ProductService {
 	List<ProductModel> query();
 
 	//增
-	Boolean add();
+	Boolean add(ProductModel product);
 	//删
 	Boolean delete(int id);
 	//通过id修改count
