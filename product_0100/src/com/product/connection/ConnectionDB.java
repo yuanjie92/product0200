@@ -49,7 +49,8 @@ public class ConnectionDB {
 	public Connection getConnection(){
 		return conn;
 	}
-		
+	
+	//关闭资源
 	public void close(){
 		if(conn==null){
 			return;
