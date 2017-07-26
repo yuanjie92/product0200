@@ -2,7 +2,6 @@ package com.product.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ConnectionDB {
@@ -14,6 +13,7 @@ public class ConnectionDB {
 	public Connection getConnection() {
 		return conn;
 	}
+
 
 	public ConnectionDB() {
 		try {
@@ -28,14 +28,16 @@ public class ConnectionDB {
 		}
 	}
 
-	public void close() {
-		if (conn == null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	
+	//关闭资源
+	public void close(){
+		if(conn==null){
+			return;
+		}
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
 	}
