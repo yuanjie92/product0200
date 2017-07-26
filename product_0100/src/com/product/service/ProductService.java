@@ -6,7 +6,7 @@ import com.product.model.ProductModel;
 
 public interface ProductService {
 	//增
-	Boolean add();
+	Boolean add(ProductModel product);
 	//删
 	Boolean delete(int id);
 	//通过id修改count

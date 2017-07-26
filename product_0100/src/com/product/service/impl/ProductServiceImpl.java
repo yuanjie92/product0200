@@ -24,8 +24,29 @@ public class ProductServiceImpl implements ProductService {
 	int ret;
 
 	@Override
-	public Boolean add() {
-		return null;
+	public Boolean add(ProductModel product) {
+		String sql = "insert into tb_product (id,code,name,count,price) values(?,?,?,?,?)";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1,product.getId());
+			ps.setString(2,product.getCode());
+			ps.setString(3,product.getName());
+			ps.setInt(4,product.getCount());
+			ps.setDouble(5,product.getPrice());
+			ret = ps.executeUpdate();
+			if(ret > 0){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
 	}
 
 	@Override

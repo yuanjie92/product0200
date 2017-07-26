@@ -28,6 +28,16 @@ public class ProductServiceTest {
 		//通过id修改count
 //		boolean flag = psi.update(59,10000);
 //		System.out.println(flag);
+		
+		//插入数据
+//		ProductModel product = new ProductModel();
+//		product.setId(1234);
+//		product.setCode("wer132");
+//		product.setName("coffee");
+//		product.setCount(50);
+//		product.setPrice(3.0);
+//		boolean flag = psi.add(product);
+//		System.out.println(flag);
 		System.out.println("finish");
 	}
 }
