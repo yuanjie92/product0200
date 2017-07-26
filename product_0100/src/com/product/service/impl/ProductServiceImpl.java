@@ -44,7 +44,6 @@ public class ProductServiceImpl implements ProductService {
 			try {
 				ps.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -52,6 +51,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	//通过id修改count(产品数量)
 	public Boolean update(int count,int id) {
 		String sql = "update tb_product set count=? where id=?";
 		try {
@@ -75,6 +75,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	//查询所有产品信息
 	public List<ProductModel> queryAll() {
 		String sql = "select * from tb_product";
 		List<ProductModel> list = new ArrayList<ProductModel>();
@@ -104,6 +105,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	//通过name(产品名)查询产品信息
 	public List<ProductModel> queryByName(String name) {
 		String sql = "select * from tb_product where name=?";
 		List<ProductModel> list = new ArrayList<ProductModel>();
@@ -134,8 +136,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	//通过code(产品编号)查询产品信息
 	public ProductModel queryByCode(String code) {
-		
 		String sql = "select * from tb_product where code=?";
 		ProductModel model = new ProductModel();
 		try {
