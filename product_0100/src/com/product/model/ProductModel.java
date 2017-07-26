@@ -53,5 +53,54 @@ public class ProductModel {
 	}
 
 	public ProductModel() {
+	
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public ProductModel() {
+	}
+	
+	@Override
+	public String toString() {
+		return "ProductModel [code=" + code + ", name=" + name + ", price=" + price + ", count=" + count + ", id=" + id
+				+ "]";
 	}
 }
