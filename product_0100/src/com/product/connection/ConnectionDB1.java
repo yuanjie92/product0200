@@ -2,34 +2,31 @@ package com.product.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ConnectionDB {
-	private final String URL = "jdbc:oracle:thin:@192.168.0.107:1521:XE";
-	private final String NAME = "oracle";
-	private final String PASSWORD = "oracle";
+public class ConnectionDB1 {
+	private final String URL = "jdbc:oracle:thin:@192.168.0.107:1521:orcl";
+	private final String NAME = "ORACLE";
+	private final String PASSWORD = "tiger";
 	private Connection conn;
 
-	public Connection getConnection() {
-		return conn;
-	}
-
-	public ConnectionDB() {
+	public ConnectionDB1() {
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
+			Class.forName("oracle.jbdc.OracleDriver");
 		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			conn = DriverManager.getConnection(URL, NAME, PASSWORD);
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void close() {
-		if (conn == null) {
+	public void colse(){
+		if(conn!=null){
 			try {
 				conn.close();
 			} catch (SQLException e) {
@@ -37,6 +34,5 @@ public class ConnectionDB {
 				e.printStackTrace();
 			}
 		}
-
 	}
 }

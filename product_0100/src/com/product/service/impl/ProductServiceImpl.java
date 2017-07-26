@@ -1,7 +1,10 @@
 package com.product.service.impl;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,12 +15,15 @@ import com.product.service.ProductService;
 public class ProductServiceImpl implements ProductService {
 	ConnectionDB connect = new ConnectionDB();
 	Connection conn = connect.getConnection();
+	PreparedStatement ps = null;
+	int i = 0;
+	ResultSet rs = null;
+	ResultSetMetaData rsmd = null;
 
 	@Override
 	public Boolean add(ProductModel pro) {
 		String sql = "insert into tb_product(code,name,price,count,id)values(?,?,?,?,?)";
-		PreparedStatement ps = null;
-		int i = 0;
+
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, pro.getCode());
@@ -27,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
 			ps.setInt(5, pro.getId());
 
 			i = ps.executeUpdate();
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,34 +54,62 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Boolean update(ProductModel pro) {
-		String sql = "update tb_product set code=?,name=?,price=?,count=?";
-		PreparedStatement ps = null;
-		int i = 0;
+		String sql = "update tb_product set code=?,name=?,price=?,count=?where id=?";
+
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, pro.getCode());
 			ps.setString(2, pro.getName());
 			ps.setDouble(3, pro.getPrice());
 			ps.setInt(4, pro.getCount());
-			
+			ps.setInt(5, pro.getId());
 
 			i = ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		if (i > 0) {
 			return true;
 		} else {
 			return false;
 		}
+
 	}
 
 	@Override
 	public List<ProductModel> query() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select code,name,price,count from tb_product where id=?";
+		try {
+			ps = conn.prepareStatement(sql);
+		} catch (SQLException e) {
+
+		}
+		try {
+			ResultSet rs = ps.executeQuery();
+			rsmd = rs.getMetaData();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (rs != null) {
+			try {
+				while (rs.next()) {
+					try {
+						rsmd = rs.getMetaData();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		return (List<ProductModel>) rsmd;
 	}
 
 }
