@@ -24,7 +24,6 @@ public class ProductServiceImpl implements ProductService {
 		conn = conndb.getConnection();
 	}
 
-	Connection conn;
 	PreparedStatement ps;
 	ResultSet result;
 	int ret;
@@ -53,11 +52,9 @@ public class ProductServiceImpl implements ProductService {
 			}
 		}
 		return false;
-
+	}
+	
 	@Override
-	public Boolean delete() {
-
-		return null;
 	public Boolean delete(int id) {
 		String sql = "delete from tb_product where id=?";
 		try {
@@ -78,31 +75,6 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return false;
 	}
-
-	@Override
-	public Boolean update(ProductModel pro) {
-		String sql = "update tb_product set code=?,name=?,price=?,count=?";
-		PreparedStatement ps = null;
-		int i = 0;
-		try {
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, pro.getCode());
-			ps.setString(2, pro.getName());
-			ps.setDouble(3, pro.getPrice());
-			ps.setInt(4, pro.getCount());
-			
-
-			i = ps.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		if (i > 0) {
-			return true;
-		} else {
-			return false;
-		}
 
 	//通过id修改count(产品数量)
 	public Boolean update(int count,int id) {
