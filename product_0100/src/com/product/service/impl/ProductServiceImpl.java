@@ -1,17 +1,11 @@
 package com.product.service.impl;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-
 import java.sql.SQLException;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-
 import java.util.List;
 
 import com.product.connection.ConnectionDB;
@@ -21,19 +15,15 @@ import com.product.service.ProductService;
 public class ProductServiceImpl implements ProductService {
 	ConnectionDB connect = new ConnectionDB();
 	Connection conn = connect.getConnection();
-	PreparedStatement ps = null;
-	int i = 0;
-	ResultSet rs = null;
-	ResultSetMetaData rsmd = null;
+	PreparedStatement ps;
+	ResultSet result;
+	int ret;
 
 	public ProductServiceImpl() {
 		ConnectionDB conndb = new ConnectionDB();
 		conn = conndb.getConnection();
 	}
 
-	PreparedStatement ps;
-	ResultSet result;
-	int ret;
 
 	@Override
 	public Boolean add(ProductModel product) {
