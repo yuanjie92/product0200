@@ -1,7 +1,10 @@
 package com.product.service.impl;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 
 import java.sql.SQLException;
 
@@ -18,6 +21,10 @@ import com.product.service.ProductService;
 public class ProductServiceImpl implements ProductService {
 	ConnectionDB connect = new ConnectionDB();
 	Connection conn = connect.getConnection();
+	PreparedStatement ps = null;
+	int i = 0;
+	ResultSet rs = null;
+	ResultSetMetaData rsmd = null;
 
 	public ProductServiceImpl() {
 		ConnectionDB conndb = new ConnectionDB();
@@ -77,7 +84,7 @@ public class ProductServiceImpl implements ProductService {
 		return false;
 	}
 
-	//通过id修改count(产品数量)
+//通过id修改count(产品数量)
 	public Boolean update(int count,int id) {
 		String sql = "update tb_product set count=? where id=?";
 		try {
@@ -99,6 +106,7 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return false;
 	}
+
 
 	@Override
 	//查询所有产品信息
@@ -188,6 +196,7 @@ public class ProductServiceImpl implements ProductService {
 			e.printStackTrace();
 		}
 		return model;
+
 	}
 	
 	
