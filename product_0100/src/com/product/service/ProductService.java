@@ -8,17 +8,6 @@ public interface ProductService {
 	// 增
 	Boolean add(ProductModel pro);
 
-	// 删
-	Boolean delete();
-
-	// 改
-	Boolean update(ProductModel pro);
-
-	// 查
-	List<ProductModel> query();
-
-	//增
-	Boolean add(ProductModel product);
 	//删
 	Boolean delete(int id);
 	//通过id修改count
