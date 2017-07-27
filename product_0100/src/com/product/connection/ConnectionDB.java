@@ -27,9 +27,9 @@ public class ConnectionDB {
 		return conn;
 	}
 
-	// 关闭资源
-	public void close() {
-		if (conn == null) {
+	//关闭资源
+	public void close(){
+		if(conn==null){
 			return;
 		}
 		try {
@@ -37,5 +37,6 @@ public class ConnectionDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 	}
 }
