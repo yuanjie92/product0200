@@ -5,8 +5,9 @@ import java.util.List;
 import com.product.model.ProductModel;
 
 public interface ProductService {
-	// 增
-	Boolean add(ProductModel pro);
+
+	//增
+	Boolean add(ProductModel product);
 
 	// 删
 	Boolean delete(int id);
