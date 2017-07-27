@@ -12,16 +12,14 @@ public class ProductModel {
 	private int count;// 商品数量
 	private int id;// id
 
+	
 	public ProductModel() {
 	}
-	
-	
+
 	
 	public String getCode() {
 		return code;
 	}
-
-
 
 	public void setCode(String code) {
 		this.code = code;

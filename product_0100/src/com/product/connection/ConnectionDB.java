@@ -10,11 +10,6 @@ public class ConnectionDB {
 	private final String PASSWORD = "oracle";
 	private Connection conn;
 
-	public Connection getConnection() {
-		return conn;
-	}
-
-
 	public ConnectionDB() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -28,7 +23,10 @@ public class ConnectionDB {
 		}
 	}
 
-	
+	public Connection getConnection() {
+		return conn;
+	}
+
 	//关闭资源
 	public void close(){
 		if(conn==null){

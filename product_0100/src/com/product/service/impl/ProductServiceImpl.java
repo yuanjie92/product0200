@@ -24,7 +24,6 @@ public class ProductServiceImpl implements ProductService {
 		conn = conndb.getConnection();
 	}
 
-	
 
 	@Override
 	public Boolean add(ProductModel product) {
@@ -51,8 +50,9 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return false;
 	}
-
+	
 	@Override
+	//通过id删除数据
 	public Boolean delete(int id) {
 		String sql = "delete from tb_product where id=?";
 		try {
